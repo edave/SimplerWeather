@@ -74,6 +74,7 @@ Simple Weather Java Switches to DarkSky */
             var result = data,
               weather = {};
 
+            weather.rawAPIData = result;
             weather.temp = result.currently.temperature;
             weather.currently = result.currently.summary;
             weather.icon = result.currently.icon;
@@ -81,6 +82,9 @@ Simple Weather Java Switches to DarkSky */
             weather.humidity = result.currently.humidity;
             weather.visibility = result.currently.visibility;
             weather.updated = result.currently.time;
+
+            // Additional DarkWeather info
+            weather.currently = result.currently
 
             weather.high = result.daily.data[ 0 ].temperatureHigh;
             weather.low = result.daily.data[ 0 ].temperatureLow;
@@ -115,7 +119,7 @@ Simple Weather Java Switches to DarkSky */
                 forecast.high = forecast.temperatureHigh;
                 forecast.low = forecast.temperatureLow;
                 forecast.icon = forecast.icon;
-
+                forecast.darkWeatherData = forecast;
 
                 forecast.alt = {
                   high: getAltTemp( options.units, forecast.temperatureHigh ),

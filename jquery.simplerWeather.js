@@ -84,7 +84,7 @@ Simple Weather Java Switches to DarkSky */
             weather.updated = result.currently.time;
 
             // Additional DarkWeather info
-            weather.currently = result.currently
+            weather.darkWeatherCurrently = result.currently
 
             weather.high = result.daily.data[ 0 ].temperatureHigh;
             weather.low = result.daily.data[ 0 ].temperatureLow;

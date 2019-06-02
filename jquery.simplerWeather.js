@@ -67,9 +67,15 @@ Simple Weather Java Switches to DarkSky */
         }
       }
 
-      $.getJSON(
-        encodeURI( getWeatherURL( options.authmethod ) ),
-        function( data ) {
+      $.get({
+        dataType: "json",
+        url: encodeURI( getWeatherURL( options.authmethod ) ),
+        error: function(error) {
+          options.error(
+            error.responseText
+          );
+        },
+        success: function( data ) {
           if( data !== null ) {
             var result = data,
               weather = {};
@@ -136,6 +142,7 @@ Simple Weather Java Switches to DarkSky */
             );
           }
         }
+      }
       );
       return this;
     }
